@@ -12,7 +12,10 @@
 @interface FlurryPlugin : CDVPlugin {
 }
 
-- (void)logPageView:(NSMutableArray*) withDict:(NSMutableDictionary*)options;
-- (void)logEvent:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+- (void)logPageView:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+- (void)logEvent:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+- (void)logEventTimed:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 - (void)logEventWithParameters:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+
+
 @end

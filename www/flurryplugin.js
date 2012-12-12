@@ -3,12 +3,16 @@ FlurryPlugin = function() {
 };
 
 FlurryPlugin.prototype.pageView = function() {
-  cordova.exec(null,null,"FlurryPlugin","logPageView",[]);
+  cordova.exec(null, null, 'FlurryPlugin', 'logPageView',[]);
 };
 
 FlurryPlugin.prototype.logEvent = function(eventName) {
-  cordova.exec(null,null,"FlurryPlugin","logEvent",[{event: eventName}]);
+  cordova.exec(null, null, 'FlurryPlugin', 'logEvent', [{event: eventName}]);
 };
+
+FlurryPlugin.prototype.logEventTimed = function(eventName) {
+  cordova.exec(null, null, 'FlurryPlugin', 'logEventTimed', [{event: eventName}]);
+}
 
 FlurryPlugin.prototype.logEventWithParameters = function(eventName, params) {
   cordova.exec(null, null, 'FlurryPlugin', 'logEventWithParameters', [{event: eventName, params: params}]);

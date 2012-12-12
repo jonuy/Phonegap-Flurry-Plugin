@@ -11,16 +11,26 @@
 
 @implementation FlurryPlugin
 
-- (void)logEvent:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options  
-{
-    [Flurry logEvent:[arguments objectAtIndex:1]];
-    NSLog(@"Logged event for %@",[arguments objectAtIndex:1]);
-}
-
 - (void)logPageView:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options  
 {
     [Flurry logPageView];
-	NSLog(@"PageView logged");
+    NSLog(@"PageView logged");
+}
+
+- (void)logEvent:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options  
+{
+    NSString *event = [options objectForKey:@"event"] ?: @"unknown-event";
+    
+    [Flurry logEvent:event];
+    NSLog(@"Logged event for %@", event);
+}
+
+- (void)logEventTimed:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options
+{
+    NSString *event = [options objectForKey:@"event"] ?: @"unknown-event";
+    
+    [Flurry logEvent:event timed:YES];
+    NSLog(@"Logging timed event for %@", event);
 }
 
 - (void)logEventWithParameters:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options
