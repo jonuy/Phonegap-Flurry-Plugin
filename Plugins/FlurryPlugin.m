@@ -7,19 +7,28 @@
 //
 
 #import "FlurryPlugin.h"
-#import "FlurryAnalytics.h"
+#import "Flurry.h"
 
 @implementation FlurryPlugin
 
 - (void)logEvent:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options  
 {
-    NSLog(@"Logging event for %@",[arguments objectAtIndex:1]);
-    [FlurryAnalytics logEvent:[arguments objectAtIndex:1]];
+    [Flurry logEvent:[arguments objectAtIndex:1]];
+    NSLog(@"Logged event for %@",[arguments objectAtIndex:1]);
 }
+
 - (void)logPageView:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options  
 {
-    NSLog(@"Logging pageView");
-    [FlurryAnalytics logPageView];
+    [Flurry logPageView];
 	NSLog(@"PageView logged");
+}
+
+- (void)logEventWithParameters:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options
+{
+    NSString *event = [options objectForKey:@"event"] ?: @"unknown-event";
+    NSMutableDictionary *params = [options objectForKey:@"params"] ?: [[NSMutableDictionary alloc] init];
+    
+    [Flurry logEvent:event withParameters:params];
+    NSLog(@"Logged event for %@ with parameters %@", event, params);
 }
 @end

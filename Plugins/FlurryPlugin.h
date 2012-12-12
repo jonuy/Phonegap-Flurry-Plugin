@@ -7,16 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
-
-#ifdef CORDOVA_FRAMEWORK
 #import <Cordova/CDVPlugin.h>
-#else
-#import "CDVPlugin.h"
-#endif
 
-@interface FlurryPlugin:CDVPlugin {
+@interface FlurryPlugin : CDVPlugin {
 }
-- (void)logPageView:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+
+- (void)logPageView:(NSMutableArray*) withDict:(NSMutableDictionary*)options;
 - (void)logEvent:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+- (void)logEventWithParameters:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 @end
