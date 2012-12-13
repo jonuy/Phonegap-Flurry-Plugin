@@ -20,5 +20,13 @@ Available Functions
 
 plugins.FlurryPlugin.pageView()
 plugins.FlurryPlugin.logEvent(eventName)
+plugins.FlurryPlugin.logEventTimed(eventName)
 plugins.FlurryPlugin.logEventWithParameters(eventName, params)
+plugins.FlurryPlugin.logEventWithParametersTimed(eventName, params)
+plugins.FlurryPlugin.endTimedEventWithParameters(eventName, params)
+plugins.FlurryPlugin.logError(error, message)
+plugins.FlurryPlugin.setAge(age)
+plugins.FlurryPlugin.setGender(gender)
+plugins.FlurryPlugin.setUserID(user_id)
+plugins.FlurryPlugin.setLocation(latitude, longitude, horizontal_accurace, vertical_accuracy)
 
